@@ -60,9 +60,7 @@ const Button = (props) => {
 
 function App() {
   const [link, setLink] = useState("");
-  const [shortLinks, setShortLinks] = useState([
-    { oldLink: "google.com", newLink: "abcd1234.com" },
-  ]);
+  const [shortLinks, setShortLinks] = useState([]);
   console.log(shortLinks);
   return (
     <div className="main">
@@ -100,7 +98,13 @@ function App() {
           />
         </div>
 
-        <div className="links-container">
+        <div
+          className={`${
+            shortLinks.length !== 0
+              ? `links-container`
+              : `links-container-empty`
+          }`}
+        >
           {shortLinks.map((links, i) => {
             return (
               <div className="link-container" key={i}>
@@ -120,7 +124,6 @@ function App() {
         </div>
       </div>
       <footer>
-
         <p>Connect with me on</p>
         <p>
           <a
